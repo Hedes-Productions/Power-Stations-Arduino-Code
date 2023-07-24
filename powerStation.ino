@@ -34,7 +34,6 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
    if (Serial.available()) {
     String receivedString = Serial.readStringUntil('\n');
     Serial.println("Received: " + receivedString);
@@ -42,7 +41,7 @@ void loop() {
    }
 }
 
-
+// This function sets the arduino pin modes
 void setArduinoPinModes(){
   pinMode(2,OUTPUT);
   pinMode(3,OUTPUT);
@@ -58,6 +57,7 @@ void setArduinoPinModes(){
   pinMode(13,OUTPUT);
 }
 
+// This function return the integer which is extracted from the String
 int extractNumber(String str) {
   String numStr = "";
   int len = str.length();
@@ -73,6 +73,7 @@ int extractNumber(String str) {
     return num;
 }
 
+// This function set the powerStation to LOW if the state is 0, if the state is 1 then otherwise
 void powerOnOffStation(int powerStation, int state){
     if(state==0){
         digitalWrite(powerStation, LOW);
@@ -81,6 +82,7 @@ void powerOnOffStation(int powerStation, int state){
     }
 }
 
+// This function shuts of all the powerstations
 void powerOffAll(int state){
     powerOnOffStation(koth_unit_1, state);
     powerOnOffStation(koth_unit_2, state);
@@ -107,6 +109,7 @@ void powerOffAll(int state){
     powerOnOffStation(stage_5, state);
 }
 
+// This function control all the powerstations accoridng to the input
 void controllingStations(String receivedString){
 
     int extractedNum = extractNumber(receivedString);
