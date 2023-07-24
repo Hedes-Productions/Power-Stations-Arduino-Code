@@ -38,7 +38,7 @@ void loop() {
    if (Serial.available()) {
     String receivedString = Serial.readStringUntil('\n');
     Serial.println("Received: " + receivedString);
-    controllingStations(receivedString)
+    controllingStations(receivedString);
    }
 }
 
@@ -75,9 +75,9 @@ int extractNumber(String str) {
 
 void powerOnOffStation(int powerStation, int state){
     if(state==0){
-        digitalWrite(powerStation, LOW)
+        digitalWrite(powerStation, LOW);
     }else{
-        digitalWrite(powerStation, HIGH)
+        digitalWrite(powerStation, HIGH);
     }
 }
 
